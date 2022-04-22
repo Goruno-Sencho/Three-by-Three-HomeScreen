@@ -8,7 +8,7 @@ float titleX, titleY, titleWidth, titleHeight, titleX2, titleY2, titleWidth2, ti
 color black=#000000, white=#FFFFE3, blue=#45A2FC, resetDefaultInk=#FFFFFF; //Night Mode, blue is 00
 Boolean rectON=false, ellipseON=false;
 String title = "Click me";
-String title2 = "Or me";
+String title2 = "     Or me";
 PFont titleFont;
 //
 void setup() 
@@ -56,8 +56,8 @@ float ellipseRectYCenter = ellipseY + ellipseDiameterY*1/2 ;
  titleY = appHeight*5/6;
  titleWidth = appWidth*1/5;
  titleHeight = appHeight*1/5;
- titleX2= appWidth*3/4; 
- titleY2= appHeight*4/5;
+ titleX2= appWidth*2/3; 
+ titleY2= appHeight*5/6;
  titleWidth2= appWidth*1/5;
  titleHeight2= appHeight* 1/5;
  titleFont = createFont("Sitka Text", 55);
@@ -75,7 +75,7 @@ void draw()
 //
 fill(blue);
 textAlign(BOTTOM, LEFT);
-textFont(titleFont, 55);
+textFont(titleFont, 70);
 text(title, titleX, titleY, titleWidth, titleHeight);
 text(title2, titleX2, titleY2, titleWidth2, titleHeight2);
 fill(resetDefaultInk);
