@@ -1,10 +1,11 @@
+int appWidth, appHeight;
 //
 void displayOrientation() {
 println(width, height, displayWidth, displayHeight);
 String ls="Landscape or Square", p="Portrait", DO="DisplayOrientation:", instruct="Flip your phone";
 //Swap display key variables for testing
-int appWidth = displayWidth;
-int appHeight = displayHeight;
+appWidth = displayWidth;
+appHeight = displayHeight;
 String orientation = ( appWidth >= appHeight ) ? ls : p ;
 println (DO, orientation);
 if ( orientation==ls){ 
