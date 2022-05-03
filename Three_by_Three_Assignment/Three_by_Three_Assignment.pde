@@ -1,5 +1,6 @@
 //Global Variables
-color black=0, whiteReset=255, red =#FC0000, lime=#98FF00;
+color black=0, whiteReset=255, red =#FC0000, lime=#98FF00, Dlime=#518900;
+Boolean turnOnDlime=false;
 float rectWidth, rectHeight, pointdiameter;
 //Points are organized by row and actually... hint-hint ... VALUE!!!
 int numberOfPoints= 17;
@@ -65,6 +66,7 @@ void setup()
   buttonHeight[3] = appHeight*(1.0/3.0)*(1.0/5.0);
   //
   printArray(buttonX);
+  printArray(buttonY);
 }//EndSetup
 //
 void draw() 
@@ -81,10 +83,35 @@ void draw()
   rect(pointX[10], pointY[10], rectWidth, rectHeight);
   rect(pointX[11], pointY[11], rectWidth, rectHeight);
   //
-  fill(lime);
+  //Hover Over is Dlime
+  if (mouseX>=buttonX[1] && mouseX<=buttonX[1]+buttonWidth[1] && mouseY>=buttonY[1] && mouseY<=buttonY[1]+buttonHeight[1]) {
+  fill(Dlime);
   rect(buttonX[1], buttonY[1], buttonWidth[1], buttonHeight[1]);
+  } else {
+    fill(lime);
+    rect(buttonX[1], buttonY[1], buttonWidth[1], buttonHeight[1]);
+  } //Button 1
+  if (mouseX>=buttonX[2] && mouseX<=buttonX[2]+buttonWidth[2] && mouseY>=buttonY[2] && mouseY<=buttonY[2]+buttonHeight[2]) {
+   fill(Dlime);
   rect(buttonX[2], buttonY[2], buttonWidth[2], buttonHeight[2]);
+  } else {
+    fill(lime);
+    rect(buttonX[2], buttonY[2], buttonWidth[2], buttonHeight[2]);
+  } //Button 2
+  if (mouseX>=buttonX[3] && mouseX<=buttonX[3]+buttonWidth[3] && mouseY>=buttonY[3] && mouseY<=buttonY[3]+buttonHeight[3]) {
+  fill(Dlime);
   rect(buttonX[3], buttonY[3], buttonWidth[3], buttonHeight[3]);
+  } else {
+   fill(lime);
+    rect(buttonX[3], buttonY[3], buttonWidth[3], buttonHeight[3]);
+  } //Button 3
+  if (mouseX>=pointX[3] && mouseX<=pointX[3]+rectWidth && mouseY>=pointY[3] && mouseY<=pointY[3]+rectHeight) {
+   fill(Dlime);
+  rect(pointX[3], pointY[3], rectWidth, rectHeight);
+  } else {
+   fill(lime);
+   rect(pointX[3], pointY[3], rectWidth, rectHeight);
+  } //Button 4 (Reset), thw whole section
   fill(whiteReset);
   //
   fill(black);
