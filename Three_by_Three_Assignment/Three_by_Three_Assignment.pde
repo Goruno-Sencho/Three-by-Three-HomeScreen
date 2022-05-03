@@ -66,9 +66,23 @@ void setup()
   buttonWidth[3] = appWidth*(1.0/3.0)*(1.0/5.0);
   buttonHeight[3] = appHeight*(1.0/3.0)*(1.0/5.0);
   //
+  buttonX[4] = appWidth*(11.0/15.0);
+  buttonY[4] = appHeight*(11.0/15.0);
+  buttonWidth[4] = appWidth*(1.0/3.0)*(1.0/5.0);
+  buttonHeight[4] = appHeight*(1.0/3.0)*(1.0/5.0);
+  //
+  buttonX[5] = appWidth*(11.0/15.0);
+  buttonY[5] = appHeight*(11.0/15.0);
+  buttonWidth[5] = appWidth*(1.0/3.0)*(1.0/5.0);
+  buttonHeight[5] = appHeight*(1.0/3.0)*(1.0/5.0);
+  //
+  buttonX[6] = appWidth*(11.0/15.0);
+  buttonY[6] = appHeight*(11.0/15.0);
+  buttonWidth[6] = appWidth*(1.0/3.0)*(1.0/5.0);
+  buttonHeight[6] = appHeight*(1.0/3.0)*(1.0/5.0);
   Pic1 = loadImage("ThreeByThree SpaceStation.jpg");
-  Pic2 = loadImage(
-  Pic3 = loadImage(
+  Pic2 = loadImage("SpaceRoom.jpg");
+  //Pic3 = loadImage(
   printArray(buttonX);
   printArray(buttonY);
 }//EndSetup
