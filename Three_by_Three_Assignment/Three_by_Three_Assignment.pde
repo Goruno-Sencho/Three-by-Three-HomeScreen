@@ -11,6 +11,7 @@ float[] buttonX= new float[numberofButtons];
 float[] buttonY= new float[numberofButtons];
 float[] buttonWidth= new float[numberofButtons];
 float[] buttonHeight= new float[numberofButtons];
+PImage Pic1, Pic2, Pic3;
 //
 void setup() 
 {
@@ -65,6 +66,9 @@ void setup()
   buttonWidth[3] = appWidth*(1.0/3.0)*(1.0/5.0);
   buttonHeight[3] = appHeight*(1.0/3.0)*(1.0/5.0);
   //
+  Pic1 = loadImage("ThreeByThree SpaceStation.jpg");
+  Pic2 = loadImage(
+  Pic3 = loadImage(
   printArray(buttonX);
   printArray(buttonY);
 }//EndSetup
