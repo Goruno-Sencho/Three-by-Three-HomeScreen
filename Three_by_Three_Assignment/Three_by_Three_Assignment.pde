@@ -1,7 +1,6 @@
 //Global Variables
-color black=0, whiteReset=255;
+color black=0, whiteReset=255, red=#FF0004;
 color lime=#98FF00, Dlime=#518900, Lblue=#03B9FF, Orange=#FF8103;
-color red=color(255, 0, 0);
 Boolean turnOnDlime=false, turnOnLblue=false, turnOnOrange=false;
 float rectWidth, rectHeight, pointdiameter;
 //Points are organized by row and actually... hint-hint ... VALUE!!!
@@ -92,10 +91,11 @@ void setup()
 void draw() 
 {
   rect(pointX[1], pointY[1], rectWidth, rectHeight);
-  //
-  if(turnOnDlime==true) fill(Dlime);
+  
+  //if(turnOnDlime==true) fill(Dlime);
   //if(turnOnLblue==true) fill(Lblue);
   //if(turnOnOrange==true) fill(Orange);
+  if (turnOnDlime==true){fill(Dlime);} else if (turnOnLblue==true) {fill(Lblue);} else if (turnOnOrange==true) {fill(Orange);}
   rect(pointX[2], pointY[2], rectWidth, rectHeight); //Buttons chage the Colour of RECT(#2)
   fill(whiteReset);
   //
@@ -169,20 +169,28 @@ void keyPressed() {}//End keyPressed
 //
 void mousePressed() {
 if (mouseX>=buttonX[1] && mouseX<=buttonX[1]+buttonWidth[1] && mouseY>=buttonY[1] && mouseY<=buttonY[1]+buttonHeight[1]) {
-println("BTN 1 Activated");
-if() {
-} else
-{
-}
-turnOnDlime=true;
+  println("BTN 1 Activated");
+  if(turnOnDlime==true) { //Button will turn on and off
+    turnOnDlime=false;
+  } else {
+    turnOnDlime=true;
+  }
 }
 if (mouseX>=buttonX[2] && mouseX<=buttonX[2]+buttonWidth[2] && mouseY>=buttonY[2] && mouseY<=buttonY[2]+buttonHeight[2]) {
 println("BTN 2 Activated");
-turnOnLblue=true;
+if(turnOnLblue==true) {
+  turnOnLblue=false;
+} else {
+  turnOnLblue=true;
+}
 }
 if (mouseX>=buttonX[3] && mouseX<=buttonX[3]+buttonWidth[3] && mouseY>=buttonY[3] && mouseY<=buttonY[3]+buttonHeight[3]) {
 println("BTN 3 Activated");
-turnOnOrange=true;
+if(turnOnOrange==true){
+  turnOnOrange=false;
+} else {
+  turnOnOrange=true;
+}
 }
 //Reset Button
 if (mouseX>=pointX[3] && mouseX<=pointX[3]+rectWidth && mouseY>=pointY[3] && mouseY<=pointY[3]+rectHeight) {
