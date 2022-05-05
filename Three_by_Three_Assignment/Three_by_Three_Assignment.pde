@@ -95,7 +95,13 @@ void draw()
   //if(turnOnDlime==true) fill(Dlime);
   //if(turnOnLblue==true) fill(Lblue);
   //if(turnOnOrange==true) fill(Orange);
-  if (turnOnDlime==true){fill(Dlime);} else if (turnOnLblue==true) {fill(Lblue);} else if (turnOnOrange==true) {fill(Orange);}
+  if (turnOnDlime==true){fill(Dlime);
+} else if (turnOnLblue==true) {
+fill(Lblue);
+} else if (turnOnOrange==true) {
+fill(Orange);
+} else{//Empty if
+}
   rect(pointX[2], pointY[2], rectWidth, rectHeight); //Buttons chage the Colour of RECT(#2)
   fill(whiteReset);
   //
