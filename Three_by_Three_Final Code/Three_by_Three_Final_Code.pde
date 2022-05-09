@@ -1,7 +1,7 @@
 //Global Variables
 color black=0, whiteReset=255, red=#FF0004;
 color lime=#98FF00, Dlime=#518900, Lblue=#03B9FF, Orange=#FF8103;
-Boolean turnOnPic1=false, turnOnPic2=false, turnOnPic3=false;
+Boolean turnOnPic1=false, turnOnPic2=false, turnOnPic3=false, turnOntext1=false;
 float rectWidth, rectHeight, pointdiameter;
 //Points are organized by row and actually... hint-hint ... VALUE!!!
 int numberOfPoints= 17;
@@ -17,12 +17,15 @@ PImage Pic1, Pic2, Pic3;
 float rectXPic1, rectYPic1, rectWidthPic1, rectHeightPic1;
 float rectXPic2, rectYPic2, rectWidthPic2, rectHeightPic2;
 float rectXPic3, rectYPic3, rectWidthPic3, rectHeightPic3;
+float text1X, text1Y, text1Width, text1Height;
 int pic1Width = 400;
 int pic1Height = 400;
 int pic2Width = 400;
 int pic2Height =400;
 int pic3Width = 800;
 int pic3Height = 326;
+String text1 = "Press Q to Quit";
+PFont titleFont;
 //
 void setup() 
 {
@@ -117,6 +120,11 @@ void setup()
   rectWidthPic3=rectWidth;
   rectHeightPic3=rectHeight;
   //
+  text1X = pointX[7];;
+  text1Y = pointY[7];;
+  text1Width = rectWidth;
+  text1Height = rectHeight;
+  //
   Pic1 = loadImage("ThreeByThree SpaceStation.jpg");
   Pic2 = loadImage("SpaceRoom.jpg");
   Pic3 = loadImage("space-220-restaurant-epcot-concept-art-800x326.jpg");
@@ -127,6 +135,8 @@ void setup()
   //Pic8 = loadImage();
   printArray(buttonX);
   printArray(buttonY);
+  //
+  titleFont = createFont("CorbelLight-Italic-48", 55);
 }//EndSetup
 //
 void draw() 
@@ -151,7 +161,13 @@ void draw()
   if(turnOnPic1==true) image(Pic1, rectXPic1, rectYPic1, rectWidthPic1, rectHeightPic1);
   if(turnOnPic2==true) image(Pic2, rectXPic2, rectYPic2, rectWidthPic2, rectHeightPic2);
   if(turnOnPic3==true) image(Pic3, rectXPic3, rectYPic3, rectWidthPic3, rectHeightPic3);
+  if(turnOntext1==true) text(text1, text1X, text1Y, text1Width, text1Height);
+  fill(black);
+  textAlign(CENTER, CENTER);
   //
+  textFont(titleFont, 50);
+  text(text1, text1X, text1Y, text1Width, text1Height);
+  fill(whiteReset);
   //Hover Over Effect is Dlime
   if (mouseX>=buttonX[1] && mouseX<=buttonX[1]+buttonWidth[1] && mouseY>=buttonY[1] && mouseY<=buttonY[1]+buttonHeight[1]) {
   fill(Dlime);
@@ -245,7 +261,9 @@ void draw()
   //
 }//EndDraw
 //
-void keyPressed() {}//End keyPressed
+void keyPressed() {
+if ( key=='Q' || key=='q' ) exit();
+}//End keyPressed
 //
 void mousePressed() {
 if (mouseX>=buttonX[1] && mouseX<=buttonX[1]+buttonWidth[1] && mouseY>=buttonY[1] && mouseY<=buttonY[1]+buttonHeight[1]){
@@ -271,7 +289,28 @@ if(turnOnPic3==true){
 } else {
   turnOnPic3=true;
 }
+if(turnOntext1==true){
+    turnOntext1=false;
+  }else{
+    turnOntext1=false;
+  }
 }
+if (mouseX>=buttonX[4] && mouseX<=buttonX[4]+buttonWidth[4] && mouseY>=buttonY[4] && mouseY<=buttonY[4]+buttonHeight[4]) {
+  println("BTN 4noReset Activated");
+  if(turnOntext1==true){
+    turnOntext1=false;
+  }else{
+    turnOntext1=false;
+  }
+}
+if (mouseX>=buttonX[5] && mouseX<=buttonX[5]+buttonWidth[5] && mouseY>=buttonY[5] && mouseY<=buttonY[5]+buttonHeight[5])
+println("BTN 5 Activated");
+  //if(turnOntext1==true){
+    //turnOntext1=false;
+  //}else{
+    //turnOntext1=false;
+ // }
+//}
 
 //Reset Button
 if (mouseX>=pointX[3] && mouseX<=pointX[3]+rectWidth && mouseY>=pointY[3] && mouseY<=pointY[3]+rectHeight) {
@@ -279,6 +318,7 @@ println("BTN 4 Activated");
 turnOnPic1=false;
 turnOnPic2=false;
 turnOnPic3=false;
+turnOntext1=false;
 }
 }//mousePressed
 //
