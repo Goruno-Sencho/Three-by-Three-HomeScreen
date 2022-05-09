@@ -289,12 +289,6 @@ if(turnOnPic3==true){
 } else {
   turnOnPic3=true;
 }
-if(turnOntext1==true){
-    turnOntext1=false;
-  }else{
-    turnOntext1=false;
-  }
-}
 if (mouseX>=buttonX[4] && mouseX<=buttonX[4]+buttonWidth[4] && mouseY>=buttonY[4] && mouseY<=buttonY[4]+buttonHeight[4]) {
   println("BTN 4noReset Activated");
   if(turnOntext1==true){
@@ -305,12 +299,12 @@ if (mouseX>=buttonX[4] && mouseX<=buttonX[4]+buttonWidth[4] && mouseY>=buttonY[4
 }
 if (mouseX>=buttonX[5] && mouseX<=buttonX[5]+buttonWidth[5] && mouseY>=buttonY[5] && mouseY<=buttonY[5]+buttonHeight[5])
 println("BTN 5 Activated");
-  //if(turnOntext1==true){
-    //turnOntext1=false;
-  //}else{
-    //turnOntext1=false;
- // }
-//}
+  if(turnOntext1==true){
+    turnOntext1=false;
+  }else{
+   turnOntext1=false;
+  }
+}
 
 //Reset Button
 if (mouseX>=pointX[3] && mouseX<=pointX[3]+rectWidth && mouseY>=pointY[3] && mouseY<=pointY[3]+rectHeight) {
