@@ -24,7 +24,7 @@ int pic2Width = 400;
 int pic2Height =400;
 int pic3Width = 800;
 int pic3Height = 326;
-String text1 = "Press Q to Quit";
+String text1 = "Press the button to Quit";
 PFont titleFont;
 //
 void setup() 
@@ -290,17 +290,11 @@ if(turnOnPic3==true){
   turnOnPic3=true;
 }
 }
-if (mouseX>=buttonX[4] && mouseX<=buttonX[4]+buttonWidth[4] && mouseY>=buttonY[4] && mouseY<=buttonY[4]+buttonHeight[4]);
-
-if (mouseX>=buttonX[5] && mouseX<=buttonX[5]+buttonWidth[5] && mouseY>=buttonY[5] && mouseY<=buttonY[5]+buttonHeight[5])
+if (mouseX>=buttonX[4] && mouseX<=buttonX[4]+buttonWidth[4] && mouseY>=buttonY[4] && mouseY<=buttonY[4]+buttonHeight[4])
+println("BTN 4.2 Activated");
+if (mouseX>=buttonX[5] && mouseX<=buttonX[5]+buttonWidth[5] && mouseY>=buttonY[5] && mouseY<=buttonY[5]+buttonHeight[5])exit();{
 println("BTN 5 Activated");
-  if(turnOntext1==true){
-    turnOntext1=false;
-  }else{
-   turnOntext1=false;
-  }
 }
-
 //Reset Button
 if (mouseX>=pointX[3] && mouseX<=pointX[3]+rectWidth && mouseY>=pointY[3] && mouseY<=pointY[3]+rectHeight) {
 println("BTN 4 Activated");
