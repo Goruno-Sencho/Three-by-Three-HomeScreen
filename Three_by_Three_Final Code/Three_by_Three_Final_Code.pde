@@ -2,6 +2,7 @@
 color black=0, whiteReset=255, red=#FF0004;
 color lime=#98FF00, Dlime=#518900, Lblue=#03B9FF, Orange=#FF8103;
 Boolean turnOnPic1=false, turnOnPic2=false, turnOnPic3=false, turnOntext1=false;
+Boolean turnOntext2=false, turnOnGreen=false;
 float rectWidth, rectHeight, pointdiameter;
 //Points are organized by row and actually... hint-hint ... VALUE!!!
 int numberOfPoints= 17;
@@ -18,6 +19,7 @@ float rectXPic1, rectYPic1, rectWidthPic1, rectHeightPic1;
 float rectXPic2, rectYPic2, rectWidthPic2, rectHeightPic2;
 float rectXPic3, rectYPic3, rectWidthPic3, rectHeightPic3;
 float text1X, text1Y, text1Width, text1Height;
+float text2X, text2Y, text2Width, text2Height;
 int pic1Width = 400;
 int pic1Height = 400;
 int pic2Width = 400;
@@ -25,7 +27,9 @@ int pic2Height =400;
 int pic3Width = 800;
 int pic3Height = 326;
 String text1 = "Press the button to Quit";
+String text2 = "Power lock, on";
 PFont titleFont;
+PFont titleFont2;
 //
 void setup() 
 {
@@ -120,11 +124,15 @@ void setup()
   rectWidthPic3=rectWidth;
   rectHeightPic3=rectHeight;
   //
-  text1X = pointX[7];;
-  text1Y = pointY[7];;
+  text1X = pointX[7];
+  text1Y = pointY[7];
   text1Width = rectWidth;
   text1Height = rectHeight;
   //
+  text2X = pointX[8];
+  text2Y = pointY[8];
+  text2Width = rectWidth;
+  text2Height = rectHeight;
   Pic1 = loadImage("ThreeByThree SpaceStation.jpg");
   Pic2 = loadImage("SpaceRoom.jpg");
   Pic3 = loadImage("space-220-restaurant-epcot-concept-art-800x326.jpg");
@@ -136,7 +144,8 @@ void setup()
   printArray(buttonX);
   printArray(buttonY);
   //
-  titleFont = createFont("CorbelLight-Italic-48", 55);
+  titleFont = createFont("Arial Black", 55);
+  titleFont2 = createFont("Consolas Italic", 55);
 }//EndSetup
 //
 void draw() 
@@ -144,16 +153,24 @@ void draw()
   //image(Pic1, rectXPic1, rectYPic1, rectWidthPic1, rectHeightPic1);
   //image(Pic2, rectXPic2, rectYPic2, rectWidthPic2, rectHeightPic2);
   rect(pointX[1], pointY[1], rectWidth, rectHeight);
+  
   rect(pointX[2], pointY[2], rectWidth, rectHeight); //Buttons chage the Colour of RECT(#2)
   fill(whiteReset);
   //
   rect(pointX[3], pointY[3], rectWidth, rectHeight);
   rect(pointX[4], pointY[4], rectWidth, rectHeight);
   rect(pointX[5], pointY[5], rectWidth, rectHeight);
+  if(turnOnGreen==true) fill(lime);
   //
   rect(pointX[6], pointY[6], rectWidth, rectHeight);
   rect(pointX[7], pointY[7], rectWidth, rectHeight);
+  fill(black);
+  if(turnOntext1==true) text(text1, text1X, text1Y, text1Width, text1Height);
+  fill(whiteReset);
   rect(pointX[8], pointY[8], rectWidth, rectHeight);
+  fill(black);
+  if(turnOntext2==true) text(text2, text2X, text2Y, text2Width, text2Height);
+  fill(whiteReset);
   //
   rect(pointX[9], pointY[9], rectWidth, rectHeight);
   rect(pointX[10], pointY[10], rectWidth, rectHeight);
@@ -161,13 +178,19 @@ void draw()
   if(turnOnPic1==true) image(Pic1, rectXPic1, rectYPic1, rectWidthPic1, rectHeightPic1);
   if(turnOnPic2==true) image(Pic2, rectXPic2, rectYPic2, rectWidthPic2, rectHeightPic2);
   if(turnOnPic3==true) image(Pic3, rectXPic3, rectYPic3, rectWidthPic3, rectHeightPic3);
-  if(turnOntext1==true) text(text1, text1X, text1Y, text1Width, text1Height);
+ 
+  
+  //
+  fill(whiteReset);
   fill(black);
   textAlign(CENTER, CENTER);
   //
-  textFont(titleFont, 50);
-  text(text1, text1X, text1Y, text1Width, text1Height);
+  textFont(titleFont, 30);
+  //text(text2, text2X, text2Y, text2Width, text2Height);
+  textFont(titleFont2, 30);
+  //text(text1, text1X, text1Y, text1Width, text1Height);
   fill(whiteReset);
+  //
   //Hover Over Effect is Dlime
   if (mouseX>=buttonX[1] && mouseX<=buttonX[1]+buttonWidth[1] && mouseY>=buttonY[1] && mouseY<=buttonY[1]+buttonHeight[1]) {
   fill(Dlime);
@@ -205,7 +228,7 @@ void draw()
     rect(buttonX[4], buttonY[4], buttonWidth[4], buttonHeight[4]);
   }//Button 4, NOT reset
   if (mouseX>=buttonX[5] && mouseX<=buttonX[5]+buttonWidth[5] && mouseY>=buttonY[5] && mouseY<=buttonY[5]+buttonHeight[5]) {
-  fill(Dlime);
+  fill(red);
   rect(buttonX[5], buttonY[5], buttonWidth[5], buttonHeight[5]);
   } else {
     fill(lime);
@@ -290,18 +313,44 @@ if(turnOnPic3==true){
   turnOnPic3=true;
 }
 }
-if (mouseX>=buttonX[4] && mouseX<=buttonX[4]+buttonWidth[4] && mouseY>=buttonY[4] && mouseY<=buttonY[4]+buttonHeight[4])
+if (mouseX>=buttonX[4] && mouseX<=buttonX[4]+buttonWidth[4] && mouseY>=buttonY[4] && mouseY<=buttonY[4]+buttonHeight[4]){
 println("BTN 4.2 Activated");
+}
 if (mouseX>=buttonX[5] && mouseX<=buttonX[5]+buttonWidth[5] && mouseY>=buttonY[5] && mouseY<=buttonY[5]+buttonHeight[5])exit();{
 println("BTN 5 Activated");
+if(turnOntext1==false) {
+  turnOntext1=true;
+} else {
+  turnOntext1=true;
+}
+}
+//
+if (mouseX>=buttonX[7] && mouseX<=buttonX[7]+buttonWidth[7] && mouseY>=buttonY[7] && mouseY<=buttonY[7]+buttonHeight[7]){
+println("BTN 7 Activated");
+  if(turnOntext2==true) {
+  turnOntext2=false;
+} else {
+  turnOntext2=true;
+}
+}
+//
+if (mouseX>=buttonX[8] && mouseX<=buttonX[8]+buttonWidth[8] && mouseY>=buttonY[8] && mouseY<=buttonY[8]+buttonHeight[8]){
+println("BTN 8 Activated");
+if(turnOnGreen==false) {
+  turnOnGreen=true;
+} else {
+  turnOnGreen=false;
+}
 }
 //Reset Button
 if (mouseX>=pointX[3] && mouseX<=pointX[3]+rectWidth && mouseY>=pointY[3] && mouseY<=pointY[3]+rectHeight) {
-println("BTN 4 Activated");
+println("BTN Reset Activated");
 turnOnPic1=false;
 turnOnPic2=false;
 turnOnPic3=false;
 turnOntext1=false;
+turnOntext2=false;
+turnOnGreen=true;
 }
 }//mousePressed
 //
