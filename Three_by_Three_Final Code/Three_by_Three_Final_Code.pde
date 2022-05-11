@@ -2,7 +2,7 @@
 color black=0, whiteReset=255, red=#FF0004;
 color lime=#98FF00, Dlime=#518900, Lblue=#03B9FF, Orange=#FF8103;
 Boolean turnOnPic1=false, turnOnPic2=false, turnOnPic3=false, turnOntext1=false;
-Boolean turnOntext2=false, turnOnGreen=false;
+Boolean turnOnElipse=false, turnOnGreen=false;
 float rectWidth, rectHeight, pointdiameter;
 //Points are organized by row and actually... hint-hint ... VALUE!!!
 int numberOfPoints= 17;
@@ -27,9 +27,7 @@ int pic2Height =400;
 int pic3Width = 800;
 int pic3Height = 326;
 String text1 = "Press the button to Quit";
-String text2 = "Power lock, on";
 PFont titleFont;
-PFont titleFont2;
 //
 void setup() 
 {
@@ -145,7 +143,7 @@ void setup()
   printArray(buttonY);
   //
   titleFont = createFont("Arial Black", 55);
-  titleFont2 = createFont("Consolas Italic", 55);
+  titleFont = createFont("Consolas Italic", 55);
 }//EndSetup
 //
 void draw() 
@@ -169,7 +167,7 @@ void draw()
   fill(whiteReset);
   rect(pointX[8], pointY[8], rectWidth, rectHeight);
   fill(black);
-  if(turnOntext2==true) text(text2, text2X, text2Y, text2Width, text2Height);
+  //if(turnOnElipse==true);
   fill(whiteReset);
   //
   rect(pointX[9], pointY[9], rectWidth, rectHeight);
@@ -187,7 +185,6 @@ void draw()
   //
   textFont(titleFont, 30);
   //text(text2, text2X, text2Y, text2Width, text2Height);
-  textFont(titleFont2, 30);
   //text(text1, text1X, text1Y, text1Width, text1Height);
   fill(whiteReset);
   //
@@ -327,10 +324,10 @@ if(turnOntext1==false) {
 //
 if (mouseX>=buttonX[7] && mouseX<=buttonX[7]+buttonWidth[7] && mouseY>=buttonY[7] && mouseY<=buttonY[7]+buttonHeight[7]){
 println("BTN 7 Activated");
-  if(turnOntext2==true) {
-  turnOntext2=false;
+  if(turnOnElipse==true) {
+  turnOnElipse=false;
 } else {
-  turnOntext2=true;
+  turnOnElipse=true;
 }
 }
 //
@@ -349,7 +346,7 @@ turnOnPic1=false;
 turnOnPic2=false;
 turnOnPic3=false;
 turnOntext1=false;
-turnOntext2=false;
+turnOnElipse=false;
 turnOnGreen=true;
 }
 }//mousePressed
