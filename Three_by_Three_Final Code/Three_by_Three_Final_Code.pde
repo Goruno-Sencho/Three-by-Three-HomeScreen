@@ -1,8 +1,8 @@
 //Global Variables
-color black=0, whiteReset=255, red=#FF0004;
+color black=0, whiteReset=255, red=#FF0004, blue=#101C7C;
 color lime=#98FF00, Dlime=#518900, Lblue=#03B9FF, Orange=#FF8103;
 Boolean turnOnPic1=false, turnOnPic2=false, turnOnPic3=false, turnOntext1=false;
-Boolean turnOnElipse=false, turnOnGreen=false;
+Boolean turnOnElipse=false, turnOnGreen=false, turnOntext2=false;
 float rectWidth, rectHeight, pointdiameter;
 //Points are organized by row and actually... hint-hint ... VALUE!!!
 int numberOfPoints= 17;
@@ -20,6 +20,7 @@ float rectXPic2, rectYPic2, rectWidthPic2, rectHeightPic2;
 float rectXPic3, rectYPic3, rectWidthPic3, rectHeightPic3;
 float text1X, text1Y, text1Width, text1Height;
 float text2X, text2Y, text2Width, text2Height;
+float EllipseX, EllipseY, EllipseDiameter;
 int pic1Width = 400;
 int pic1Height = 400;
 int pic2Width = 400;
@@ -27,7 +28,9 @@ int pic2Height =400;
 int pic3Width = 800;
 int pic3Height = 326;
 String text1 = "Press the button to Quit";
+String text2 = "The Adventrue in space";
 PFont titleFont;
+PFont titleFont2;
 //
 void setup() 
 {
@@ -142,8 +145,14 @@ void setup()
   printArray(buttonX);
   printArray(buttonY);
   //
+  EllipseX= pointX[11];
+  EllipseY= pointY[11]; 
+  EllipseDiameter= rectWidth*1/2;
+  //
   titleFont = createFont("Arial Black", 55);
   titleFont = createFont("Consolas Italic", 55);
+  titleFont2 = createFont("Arial Black", 55);
+  titleFont2 = createFont("Consolas Italic", 55);
 }//EndSetup
 //
 void draw() 
@@ -160,19 +169,22 @@ void draw()
   rect(pointX[5], pointY[5], rectWidth, rectHeight);
   if(turnOnGreen==true) fill(lime);
   //
-  rect(pointX[6], pointY[6], rectWidth, rectHeight);
+  rect(pointX[6], pointY[6], rectWidth, rectHeight); 
   rect(pointX[7], pointY[7], rectWidth, rectHeight);
   fill(black);
   if(turnOntext1==true) text(text1, text1X, text1Y, text1Width, text1Height);
   fill(whiteReset);
   rect(pointX[8], pointY[8], rectWidth, rectHeight);
   fill(black);
-  //if(turnOnElipse==true);
+  if(turnOntext1==true) text(text2, text2X, text2Y, text2Width, text2Height);
   fill(whiteReset);
   //
   rect(pointX[9], pointY[9], rectWidth, rectHeight);
   rect(pointX[10], pointY[10], rectWidth, rectHeight);
   rect(pointX[11], pointY[11], rectWidth, rectHeight);
+  fill(blue);
+  if(turnOnElipse==true) ellipse(EllipseX, EllipseY, EllipseDiameter, EllipseDiameter);
+  fill(whiteReset);
   if(turnOnPic1==true) image(Pic1, rectXPic1, rectYPic1, rectWidthPic1, rectHeightPic1);
   if(turnOnPic2==true) image(Pic2, rectXPic2, rectYPic2, rectWidthPic2, rectHeightPic2);
   if(turnOnPic3==true) image(Pic3, rectXPic3, rectYPic3, rectWidthPic3, rectHeightPic3);
@@ -312,6 +324,11 @@ if(turnOnPic3==true){
 }
 if (mouseX>=buttonX[4] && mouseX<=buttonX[4]+buttonWidth[4] && mouseY>=buttonY[4] && mouseY<=buttonY[4]+buttonHeight[4]){
 println("BTN 4.2 Activated");
+if(turnOnElipse==true){
+  turnOnElipse=false;
+} else {
+  turnOnElipse=true;
+}
 }
 if (mouseX>=buttonX[5] && mouseX<=buttonX[5]+buttonWidth[5] && mouseY>=buttonY[5] && mouseY<=buttonY[5]+buttonHeight[5])exit();{
 println("BTN 5 Activated");
@@ -324,10 +341,10 @@ if(turnOntext1==false) {
 //
 if (mouseX>=buttonX[7] && mouseX<=buttonX[7]+buttonWidth[7] && mouseY>=buttonY[7] && mouseY<=buttonY[7]+buttonHeight[7]){
 println("BTN 7 Activated");
-  if(turnOnElipse==true) {
-  turnOnElipse=false;
+if(turnOntext2==false) {
+  turnOntext2=true;
 } else {
-  turnOnElipse=true;
+  turnOntext2=true;
 }
 }
 //
@@ -346,8 +363,9 @@ turnOnPic1=false;
 turnOnPic2=false;
 turnOnPic3=false;
 turnOntext1=false;
+turnOntext2=false;
 turnOnElipse=false;
-turnOnGreen=true;
+turnOnGreen=false;
 }
 }//mousePressed
 //
