@@ -4,6 +4,11 @@ color lime=#98FF00, Dlime=#518900, Lblue=#03B9FF, Orange=#FF8103;
 Boolean turnOnPic1=false, turnOnPic2=false, turnOnPic3=false, turnOntext1=false;
 Boolean turnOnElipse=false, turnOnGreen=false, turnOntext2=false;
 float rectWidth, rectHeight, pointdiameter;
+float text3X, text3Y, text3Width, text3Height;
+float text4X, text4Y, text4Width, text4Height;
+float text5X, text5Y, text5Width, text5Height;
+float text6X, text6Y, text6Width, text6Height;
+float text7X, text7Y, text7Width, text7Height;
 //Points are organized by row and actually... hint-hint ... VALUE!!!
 int numberOfPoints= 17;
 float[] pointX = new float[numberOfPoints];
@@ -27,10 +32,17 @@ int pic2Width = 400;
 int pic2Height =400;
 int pic3Width = 800;
 int pic3Height = 326;
-String text1 = "Press the button to Quit";
-String text2 = "The Adventrue in space";
-PFont titleFont;
-PFont titleFont2;
+String text1 = "Press this button to Quit";
+String text2 = "An Awesome adventure!";
+String text3 = "click here";
+String text4 = "click here";
+String text5 = "click here";
+String text6 = "click here";
+String text7 = "RESET";
+String text8 = "Start here";
+String text9 = "Or here";
+PFont titleFont, titleFont2, titleFont3, titleFont4;
+PFont titleFont5, titleFont6, titleFont7, titleFont8, titleFont9;
 //
 void setup() 
 {
@@ -134,6 +146,13 @@ void setup()
   text2Y = pointY[8];
   text2Width = rectWidth;
   text2Height = rectHeight;
+  //
+  text3X=pointX[1];
+  text3Y=pointY[1];
+  text3Width=rectWidth;
+  text3Height=rectHeight;
+  //
+  
   Pic1 = loadImage("ThreeByThree SpaceStation.jpg");
   Pic2 = loadImage("SpaceRoom.jpg");
   Pic3 = loadImage("space-220-restaurant-epcot-concept-art-800x326.jpg");
@@ -151,8 +170,6 @@ void setup()
   //
   titleFont = createFont("Arial Black", 55);
   titleFont = createFont("Consolas Italic", 55);
-  titleFont2 = createFont("Arial Black", 55);
-  titleFont2 = createFont("Consolas Italic", 55);
 }//EndSetup
 //
 void draw() 
@@ -160,11 +177,14 @@ void draw()
   //image(Pic1, rectXPic1, rectYPic1, rectWidthPic1, rectHeightPic1);
   //image(Pic2, rectXPic2, rectYPic2, rectWidthPic2, rectHeightPic2);
   rect(pointX[1], pointY[1], rectWidth, rectHeight);
-  
+  text(text3, text3X, text3Y, text3Width, text3Height);
   rect(pointX[2], pointY[2], rectWidth, rectHeight); //Buttons chage the Colour of RECT(#2)
   fill(whiteReset);
   //
   rect(pointX[3], pointY[3], rectWidth, rectHeight);
+  fill(black);
+  if(turnOntext2==true) text(text2, text2X, text2Y, text2Width, text2Height);
+  fill(whiteReset);
   rect(pointX[4], pointY[4], rectWidth, rectHeight);
   rect(pointX[5], pointY[5], rectWidth, rectHeight);
   if(turnOnGreen==true) fill(lime);
@@ -175,11 +195,9 @@ void draw()
   if(turnOntext1==true) text(text1, text1X, text1Y, text1Width, text1Height);
   fill(whiteReset);
   rect(pointX[8], pointY[8], rectWidth, rectHeight);
-  fill(black);
-  if(turnOntext1==true) text(text2, text2X, text2Y, text2Width, text2Height);
-  fill(whiteReset);
   //
   rect(pointX[9], pointY[9], rectWidth, rectHeight);
+  //
   rect(pointX[10], pointY[10], rectWidth, rectHeight);
   rect(pointX[11], pointY[11], rectWidth, rectHeight);
   fill(blue);
@@ -192,12 +210,17 @@ void draw()
   
   //
   fill(whiteReset);
+  //
   fill(black);
   textAlign(CENTER, CENTER);
   //
   textFont(titleFont, 30);
-  //text(text2, text2X, text2Y, text2Width, text2Height);
-  //text(text1, text1X, text1Y, text1Width, text1Height);
+  text(text3, text3X, text3Y, text3Width, text3Height);
+  //text(text4, text4X, text4Y, text4Width, text4Height);
+  //text(text5, text5X, text5Y, text5Width, text5Height);
+  //text(text6, text6X, text6Y, text6Width, text6Height);
+  //text(text7, text7X, text7Y, text7Width, text7Height);
+     
   fill(whiteReset);
   //
   //Hover Over Effect is Dlime
@@ -245,14 +268,14 @@ void draw()
     
   }//
   if (mouseX>=buttonX[6] && mouseX<=buttonX[6]+buttonWidth[6] && mouseY>=buttonY[6] && mouseY<=buttonY[6]+buttonHeight[6]) {
-  fill(Dlime);
+  fill(blue);
   rect(buttonX[6], buttonY[6], buttonWidth[6], buttonHeight[6]);
   } else {
     fill(lime);
     rect(buttonX[6], buttonY[6], buttonWidth[6], buttonHeight[6]);
   }//
   if (mouseX>=buttonX[7] && mouseX<=buttonX[7]+buttonWidth[7] && mouseY>=buttonY[7] && mouseY<=buttonY[7]+buttonHeight[7]) {
-  fill(Dlime);
+  fill(blue);
   rect(buttonX[7], buttonY[7], buttonWidth[7], buttonHeight[7]);
   } else {
     fill(lime);
@@ -341,8 +364,8 @@ if(turnOntext1==false) {
 //
 if (mouseX>=buttonX[7] && mouseX<=buttonX[7]+buttonWidth[7] && mouseY>=buttonY[7] && mouseY<=buttonY[7]+buttonHeight[7]){
 println("BTN 7 Activated");
-if(turnOntext2==false) {
-  turnOntext2=true;
+if(turnOntext2==true) {
+  turnOntext2=false;
 } else {
   turnOntext2=true;
 }
