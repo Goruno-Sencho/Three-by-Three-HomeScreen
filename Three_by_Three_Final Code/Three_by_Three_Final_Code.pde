@@ -32,9 +32,9 @@ int pic2Width = 400;
 int pic2Height =400;
 int pic3Width = 800;
 int pic3Height = 326;
-String text1 = "Press this button to Quit";
+String text1 = "Press this button to Quit, or R to RESET";
 String text2 = "An Awesome adventure!";
-String text3 = "click here";
+String text3 = "RESET";
 String text4 = "click here";
 String text5 = "click here";
 String text6 = "click here";
@@ -147,8 +147,8 @@ void setup()
   text2Width = rectWidth;
   text2Height = rectHeight;
   //
-  text3X=pointX[1];
-  text3Y=pointY[1];
+  text3X=pointX[1]*3/4;
+  text3Y=pointY[1]*3/4;
   text3Width=rectWidth;
   text3Height=rectHeight;
   //
@@ -209,19 +209,14 @@ void draw()
  
   
   //
-  fill(whiteReset);
-  //
   fill(black);
-  textAlign(CENTER, CENTER);
-  //
-  textFont(titleFont, 30);
-  text(text3, text3X, text3Y, text3Width, text3Height);
-  //text(text4, text4X, text4Y, text4Width, text4Height);
-  //text(text5, text5X, text5Y, text5Width, text5Height);
-  //text(text6, text6X, text6Y, text6Width, text6Height);
-  //text(text7, text7X, text7Y, text7Width, text7Height);
-     
-  fill(whiteReset);
+textAlign(CENTER, CENTER);
+//
+textFont(titleFont, 30);
+text(text3, text3X, text3Y, text3Width, text3Height);
+fill(whiteReset);
+//
+  
   //
   //Hover Over Effect is Dlime
   if (mouseX>=buttonX[1] && mouseX<=buttonX[1]+buttonWidth[1] && mouseY>=buttonY[1] && mouseY<=buttonY[1]+buttonHeight[1]) {
@@ -318,6 +313,16 @@ void draw()
 //
 void keyPressed() {
 if ( key=='Q' || key=='q' ) exit();
+if ( key=='R' || key=='r') {
+println("BTN Reset Activated");
+turnOnPic1=false;
+turnOnPic2=false;
+turnOnPic3=false;
+turnOntext1=false;
+turnOntext2=false;
+turnOnElipse=false;
+turnOnGreen=false;
+}
 }//End keyPressed
 //
 void mousePressed() {
